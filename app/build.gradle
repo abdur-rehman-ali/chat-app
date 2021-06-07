@@ -45,4 +45,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics'
     //Google sign in
     implementation 'com.google.firebase:firebase-auth'
+    //Picasso for image loading
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+    //Library for cirlce image view
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
 }
