@@ -10,6 +10,12 @@
     <include layout="@layout/toolbar"
         android:id="@+id/toolbar"
         tools:ignore="InvalidId" />
+    <ListView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp">
+    </ListView>
 
 
 </LinearLayout>

@@ -1,18 +1,15 @@
 package com.example.chat_app.Model;
 
-import android.net.Uri;
-
-public class UserProfileData {
-
+public class users {
     private String name;
     private String email;
     private String uuid;
     private String uri;
 
-    public UserProfileData() {
+    public users() {
     }
 
-    public UserProfileData(String name, String email, String uuid, String uri) {
+    public users(String name, String email, String uuid, String uri) {
         this.name = name;
         this.email = email;
         this.uuid = uuid;
