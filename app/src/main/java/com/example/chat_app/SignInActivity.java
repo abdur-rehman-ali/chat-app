@@ -47,7 +47,7 @@ public class SignInActivity extends AppCompatActivity {
 
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
-        currentuser = FirebaseAuth.getInstance().getCurrentUser();
+
         db = FirebaseFirestore.getInstance();
 
         //Adding on click events
@@ -102,6 +102,7 @@ public class SignInActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
+
                             addDataToFirestore();
                             Intent intent = new Intent(SignInActivity.this,MainActivity.class);
                             startActivity(intent);
@@ -118,7 +119,8 @@ public class SignInActivity extends AppCompatActivity {
 
     private void addDataToFirestore() {
 
-        UserProfileData data = new UserProfileData(currentuser.getDisplayName(),currentuser.getEmail(),currentuser.getUid());
+        currentuser = FirebaseAuth.getInstance().getCurrentUser();
+        UserProfileData data = new UserProfileData(currentuser.getDisplayName(),currentuser.getEmail(),currentuser.getUid(),currentuser.getPhotoUrl().toString());
         db.collection("chat_users").document(currentuser.getUid())
                 .set(data)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -129,7 +131,7 @@ public class SignInActivity extends AppCompatActivity {
                 }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-    
+
             }
         });
     }
