@@ -3,4 +3,6 @@
 
     <item android:title="sign out"
         android:id="@+id/sign_out"/>
+    <item android:title="Profile"
+        android:id="@+id/profile"/>
 </menu>

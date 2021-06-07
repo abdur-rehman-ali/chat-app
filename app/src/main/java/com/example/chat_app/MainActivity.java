@@ -22,23 +22,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        name=findViewById(R.id.name);
-        email=findViewById(R.id.email);
+
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user != null) {
-            // User is signed in
-            String user_name = user.getDisplayName();
-            String user_email = user.getEmail();
-            name.setText(user_name);
-            email.setText(user_email);
-
-        } else {
-            // No user is signed in
-        }
     }
 
     @Override
@@ -53,11 +41,18 @@ public class MainActivity extends AppCompatActivity {
             case R.id.sign_out:
                 signOut();
                 break;
+            case R.id.profile:
+                showProfile();
             default:
                 break;
         }
 
         return true;
+    }
+
+    private void showProfile() {
+        Intent intent = new Intent(getApplicationContext(),UserProfile.class);
+        startActivity(intent);
     }
 
     private void signOut() {
