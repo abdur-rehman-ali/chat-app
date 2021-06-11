@@ -104,6 +104,7 @@ public class SignInActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
 
                             addDataToFirestore();
+                            Toast.makeText(SignInActivity.this, "Data added to firestore", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(SignInActivity.this,MainActivity.class);
                             startActivity(intent);
 
@@ -136,16 +137,17 @@ public class SignInActivity extends AppCompatActivity {
         });
     }
 
-//    @Override
-//    public void onStart() {
-//        super.onStart();
-//        // Check if user is signed in (non-null) and update UI accordingly.
-//        FirebaseUser currentUser = mAuth.getCurrentUser();
-//        if (currentUser!=null)
-//        {
-//            Intent intent = new Intent(SignInActivity.this,MainActivity.class);
-//            startActivity(intent);
-//        }
-//    }
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser!=null)
+        {
+            Intent intent = new Intent(SignInActivity.this,MainActivity.class);
+            startActivity(intent);
+            finishAffinity();
+        }
+    }
 
 }
