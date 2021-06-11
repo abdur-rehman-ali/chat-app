@@ -25,6 +25,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -36,6 +38,7 @@ public class SignInActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
     private FirebaseUser currentuser;
+    private FirebaseDatabase database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,8 +106,10 @@ public class SignInActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
 
-                            addDataToFirestore();
+//                            addDataToFirestore();
+                            addDataToDatabase();
                             Toast.makeText(SignInActivity.this, "Data added to firestore", Toast.LENGTH_SHORT).show();
+                            addDataToDatabase();
                             Intent intent = new Intent(SignInActivity.this,MainActivity.class);
                             startActivity(intent);
 
@@ -116,6 +121,14 @@ public class SignInActivity extends AppCompatActivity {
                         }
                     }
                 });
+    }
+
+    private void addDataToDatabase() {
+        currentuser = FirebaseAuth.getInstance().getCurrentUser();
+        UserProfileData data = new UserProfileData(currentuser.getDisplayName(),currentuser.getEmail(),currentuser.getUid(),currentuser.getPhotoUrl().toString());
+       DatabaseReference myRef= FirebaseDatabase.getInstance().getReference("users").child(currentuser.getUid());
+       myRef.setValue(data);
+
     }
 
     private void addDataToFirestore() {
@@ -141,6 +154,7 @@ public class SignInActivity extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
+
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser!=null)
         {
