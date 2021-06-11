@@ -11,9 +11,10 @@
     <TextView
         android:layout_marginTop="100dp"
         android:layout_width="match_parent"
+        android:textStyle="bold"
         android:layout_gravity="center_horizontal"
         android:layout_height="wrap_content"
-        android:text="Profile information"
+        android:text="User's Profile"
         android:textAllCaps="true"
         android:textSize="16dp"
         android:padding="10dp"/>
@@ -33,7 +34,7 @@
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:text="usernmae"
-        android:textSize="16dp" />
+        android:textSize="12dp" />
 
     <TextView
         android:id="@+id/email"
@@ -41,5 +42,5 @@
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:text="email"
-        android:textSize="16dp" />
+        android:textSize="12dp" />
 </LinearLayout>

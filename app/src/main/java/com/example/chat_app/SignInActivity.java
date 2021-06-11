@@ -108,8 +108,6 @@ public class SignInActivity extends AppCompatActivity {
 
 //                            addDataToFirestore();
                             addDataToDatabase();
-                            Toast.makeText(SignInActivity.this, "Data added to firestore", Toast.LENGTH_SHORT).show();
-                            addDataToDatabase();
                             Intent intent = new Intent(SignInActivity.this,MainActivity.class);
                             startActivity(intent);
 
