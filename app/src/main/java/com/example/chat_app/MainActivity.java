@@ -73,9 +73,12 @@ public class MainActivity extends AppCompatActivity {
         database.getReference().child("users").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                users.clear();
                 for (DataSnapshot postSnapshot: snapshot.getChildren()) {
                     UserProfileData user = postSnapshot.getValue(UserProfileData.class);
-                    users.add(user);
+                    if(!user.getUuid().equals(FirebaseAuth.getInstance().getUid()))
+                        users.add(user);
+
                 }
                 userAdapter.notifyDataSetChanged();
             }

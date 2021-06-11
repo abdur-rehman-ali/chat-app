@@ -41,7 +41,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
     public void onBindViewHolder(@NonNull UserViewHolder holder, int position) {
      UserProfileData user= usersData.get(position);
     holder.title.setText(user.getName());
-    holder.subtitle.setText(user.getEmail());
+//    holder.subtitle.setText(user.getEmail());
     Picasso.with(context).load(user.getUri()).into(holder.icon);
 
     holder.itemView.setOnClickListener(new View.OnClickListener() {

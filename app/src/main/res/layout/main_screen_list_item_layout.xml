@@ -18,18 +18,17 @@
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="User name"
             android:textStyle="bold"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
             android:padding="2dp"
-            android:textColor="#4d4d4d" />
+            android:textColor="#FFFDFD" />
         <TextView
             android:id="@+id/subtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
+            android:hint="Tap to chat"
             android:layout_marginLeft="10dp"/>
     </LinearLayout>
 </LinearLayout>
