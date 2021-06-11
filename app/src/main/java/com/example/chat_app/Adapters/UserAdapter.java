@@ -1,6 +1,7 @@
 package com.example.chat_app.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.chat_app.Model.UserProfileData;
 import com.example.chat_app.R;
 import com.example.chat_app.UserProfile;
+import com.example.chat_app.chatActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -41,6 +43,16 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
     holder.title.setText(user.getName());
     holder.subtitle.setText(user.getEmail());
     Picasso.with(context).load(user.getUri()).into(holder.icon);
+
+    holder.itemView.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(context, chatActivity.class);
+            intent.putExtra("name",user.getName());
+            intent.putExtra("uid",user.getUuid());
+            context.startActivity(intent);
+        }
+    });
 
 
     }
